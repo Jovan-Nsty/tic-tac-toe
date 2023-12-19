@@ -7,13 +7,13 @@ const gameBoard = (() => {
 
   const displayGameBoard = () => gameBoard;
 
-  const updateGameBoard = (playerSymbol, row, col) => {
+  const placeSymbol = (playerSymbol, row, col) => {
     if (gameBoard[row][col] === null) {
       gameBoard[row][col] = playerSymbol;
     }
   };
 
-  return { displayGameBoard, updateGameBoard };
+  return { displayGameBoard, placeSymbol };
 })();
 
 const createPlayer = (name, mark) => {
@@ -26,10 +26,18 @@ const createPlayer = (name, mark) => {
   const displayPlayersScore = () => playerScore;
   const updatePlayersScore = () => playerScore++;
 
+  const placeSymbolOnBoard = (row, col) => {
+    gameBoard.placeSymbol(playerSymbol, row, col);
+  };
+
   return {
     displayPlayersName,
     displayPlayersSymbol,
     displayPlayersScore,
     updatePlayersScore,
+    placeSymbolOnBoard,
   };
 };
+
+const playerOne = createPlayer('playerOne', 'X');
+const playerTwo = createPlayer('playerTwo', 'O');

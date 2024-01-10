@@ -63,6 +63,39 @@ const gameBoard = (() => {
   return { displayGameBoard, placeSymbol };
 })();
 
+const gameFlow = (() => {
+  let rowPosition = null;
+  let columnPosition = null;
+  let playerOneMove = true;
+
+  const container = document.getElementById('container');
+
+  // Get row and column positions of clicked square
+  container.addEventListener('click',(event) => {
+    const target = event.target;
+    const rowElement = target.closest('.row');
+
+    if (rowElement) {
+      rowPosition = rowElement.dataset.row;
+      console.log(`Row position: ${rowPosition}`);
+    }
+
+    if (target.classList.contains('column')) {
+      columnPosition = target.dataset.column;
+      console.log(`Column position: ${columnPosition}`);
+    }
+
+    // Players take turns using row and column positions to fill available squares
+    if(playerOneMove) {
+      playerOne.placeSymbolOnBoard(rowPosition,columnPosition);
+      playerOneMove = false;
+    } else {
+      playerTwo.placeSymbolOnBoard(rowPosition,columnPosition);
+      playerOneMove = true;
+    }
+  })
+})();
+
 const createPlayer = (name, mark) => {
   const playerName = name;
   const playerSymbol = mark;

@@ -23,6 +23,16 @@ const gameBoard = (() => {
     }
   };
 
+  const deleteGameBoard = () => {
+    for(let i = 0; i < gameBoard.length; i++) {
+      for(let j = 0; j < gameBoard[i].length; j++) {
+        gameBoard[i][j] = null;
+      }
+    }
+    displayGameBoard();
+    gameActive = true;
+  };
+
   const placeSymbol = (playerName,playerSymbol, row, col) => {
     if(gameActive) {
       if (gameBoard[row][col] === null) {
@@ -70,7 +80,7 @@ const gameBoard = (() => {
     }
   };
 
-  return { displayGameBoard, placeSymbol };
+  return { displayGameBoard, placeSymbol, deleteGameBoard };
 })();
 
 const gameFlow = (() => {
@@ -104,6 +114,17 @@ const gameFlow = (() => {
       playerOneMove = true;
     }
   })
+})();
+
+const displayController = (() => {
+  const rematchBtn = document.querySelector('.button');
+
+  const { deleteGameBoard } = gameBoard;
+
+  rematchBtn.addEventListener('click',() => {
+    console.log('rematch click');
+    deleteGameBoard();
+  });
 })();
 
 const createPlayer = (name, mark) => {

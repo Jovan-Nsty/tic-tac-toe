@@ -7,7 +7,8 @@ const gameBoard = (() => {
 
   let gameActive = true;
 
-  const gameOver = () => {
+  const gameOver = (playerSymbol) => {
+    playerSymbol === 'X' ? playerOne.updatePlayersScore() : playerTwo.updatePlayersScore();
     gameActive = false;
     console.log('Game Over!');
   }
@@ -38,30 +39,30 @@ const gameBoard = (() => {
         // check rows
         if (gameBoard[j].every(row => row === playerSymbol)) {
           console.log('Row win for ' + playerName);
-          gameOver();
+          gameOver(playerSymbol);
           break;
         }
         // check columns
         if (gameBoard.every(column => column[j] === playerSymbol)) {
           console.log('Column win for ' + playerName);
-          gameOver();
+          gameOver(playerSymbol);
           break;
         }
         // check diagonals
         if (gameBoard[0][0] === playerSymbol && gameBoard[1][1] === playerSymbol && gameBoard[2][2] === playerSymbol) {
           console.log('Left diagonal win for ' + playerName);
-          gameOver();
+          gameOver(playerSymbol);
           break;
         }
         if(gameBoard[0][2] === playerSymbol && gameBoard[1][1] === playerSymbol && gameBoard[2][0] === playerSymbol) {
           console.log('right diagonal win for ' + playerName);
-          gameOver();
+          gameOver(playerSymbol);
           break;
         }
         // check ties
         if(gameBoard.every(row => row.every(element => element !== null))) {
           console.log(`It's a tie!`);
-          gameOver();
+          gameOver(playerSymbol);
           break;
         }
       }

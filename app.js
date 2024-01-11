@@ -12,13 +12,22 @@ const gameBoard = (() => {
     console.log('Game Over!');
   }
 
-  const displayGameBoard = () => gameBoard;
+  const displayGameBoard = () => {
+    for(let i = 0; i < gameBoard.length; i++) {
+      const row = document.querySelector(`[data-row="${i}"]`);
+      for(let j = 0; j < gameBoard[i].length; j++) {
+        const column = row.querySelector(`[data-column="${j}"]`);
+        column.textContent = gameBoard[i][j];
+      }
+    }
+  };
 
   const placeSymbol = (playerName,playerSymbol, row, col) => {
     if(gameActive) {
       if (gameBoard[row][col] === null) {
         gameBoard[row][col] = playerSymbol;
       }
+      displayGameBoard();
       checkWin(playerName,playerSymbol);
     }
   };

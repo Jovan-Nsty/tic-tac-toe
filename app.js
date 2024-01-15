@@ -45,39 +45,35 @@ const gameBoard = (() => {
   };
 
   const checkWin = (playerName,playerSymbol) => {
-    for (let i = 0; i < gameBoard.length; i++) {
-      for (let j = 0; j < gameBoard[i].length; j++) {
-        // check rows
-        if (gameBoard[j].every(row => row === playerSymbol)) {
-          console.log('Row win for ' + playerName);
-          gameOver(playerSymbol);
-          break;
-        }
-        // check columns
-        if (gameBoard.every(column => column[j] === playerSymbol)) {
-          console.log('Column win for ' + playerName);
-          gameOver(playerSymbol);
-          break;
-        }
-        // check diagonals
-        if (gameBoard[0][0] === playerSymbol && gameBoard[1][1] === playerSymbol && gameBoard[2][2] === playerSymbol) {
-          console.log('Left diagonal win for ' + playerName);
-          gameOver(playerSymbol);
-          break;
-        }
-        if(gameBoard[0][2] === playerSymbol && gameBoard[1][1] === playerSymbol && gameBoard[2][0] === playerSymbol) {
-          console.log('right diagonal win for ' + playerName);
-          gameOver(playerSymbol);
-          break;
-        }
-        // check ties
-        if(gameBoard.every(row => row.every(element => element !== null))) {
-          console.log(`It's a tie!`);
-          gameActive = false;
-          break;
-        }
+    // Check rows
+    for(let i = 0; i < gameBoard.length; i++) {
+      if(gameBoard[i].every(row => row === playerSymbol)) {
+        console.log(`Row win for ${playerName}`);
+        gameOver(playerSymbol);
       }
-      break;
+    }
+
+    // Check columns
+    for(let i = 0; i < gameBoard[0].length; i++) {
+      if(gameBoard.every(column => column[i] === playerSymbol)) {
+        console.log(`Column win for ${playerName}`);
+        gameOver(playerSymbol);
+      }
+    }
+
+    // Check diagonals
+    if(gameBoard[0][0] === playerSymbol && gameBoard[1][1] === playerSymbol && gameBoard[2][2] === playerSymbol) {
+      console.log(`Left diagonal win for ${playerName}`);
+      gameOver(playerSymbol);
+    } else if (gameBoard[0][2] === playerSymbol && gameBoard[1][1] === playerSymbol && gameBoard[2][0] === playerSymbol) {
+      console.log(`Right diagonal win for ${playerName}`);
+      gameOver(playerSymbol);
+    }
+
+    // Check ties
+    if(gameBoard.every(row => row.every(element => element !== null))) {
+      console.log(`It's a tie!`);
+      gameActive = false;
     }
   };
 

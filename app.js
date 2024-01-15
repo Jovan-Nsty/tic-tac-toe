@@ -73,7 +73,7 @@ const gameBoard = (() => {
         // check ties
         if(gameBoard.every(row => row.every(element => element !== null))) {
           console.log(`It's a tie!`);
-          gameOver(playerSymbol);
+          gameActive = false;
           break;
         }
       }

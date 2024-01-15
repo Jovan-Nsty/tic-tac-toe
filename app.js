@@ -166,7 +166,7 @@ const displayResult = (() => {
     resultPlaceholder.appendChild(createParagraph);
   });
 
-  updateResult()
+  updateResult();
 
   return { updateResult }
 })();

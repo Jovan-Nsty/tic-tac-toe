@@ -1,3 +1,39 @@
+const createPlayer = () => {
+  let playerName = '';
+  let playerSymbol = '';
+  let playerScore = 0;
+
+  const setPlayersName = (name) => {
+    playerName = name;
+  }
+
+  const setPlayersSymbol = (symbol) => {
+    playerSymbol = symbol;
+  }
+
+  const displayPlayersName = () => playerName;
+  const displayPlayersSymbol = () => playerSymbol;
+  const displayPlayersScore = () => playerScore;
+  const updatePlayersScore = () => playerScore++;
+
+  const placeSymbolOnBoard = (row, col) => {
+    gameBoard.placeSymbol(playerName,playerSymbol, row, col);
+  };
+
+  return {
+    displayPlayersName,
+    displayPlayersSymbol,
+    displayPlayersScore,
+    updatePlayersScore,
+    placeSymbolOnBoard,
+    setPlayersName,
+    setPlayersSymbol
+  };
+};
+
+const playerOne = createPlayer();
+const playerTwo = createPlayer();
+
 const gameBoard = (() => {
   let gameBoard = [
     [null, null, null],
@@ -87,6 +123,9 @@ const gameFlow = (() => {
 
   const container = document.getElementById('container');
 
+  playerOne.setPlayersSymbol('X');
+  playerTwo.setPlayersSymbol('O');
+
   // Get row and column positions of clicked square
   container.addEventListener('click',(event) => {
     const target = event.target;
@@ -124,32 +163,6 @@ const displayController = (() => {
   });
 })();
 
-const createPlayer = (name, mark) => {
-  const playerName = name;
-  const playerSymbol = mark;
-  let playerScore = 0;
-
-  const displayPlayersName = () => playerName;
-  const displayPlayersSymbol = () => playerSymbol;
-  const displayPlayersScore = () => playerScore;
-  const updatePlayersScore = () => playerScore++;
-
-  const placeSymbolOnBoard = (row, col) => {
-    gameBoard.placeSymbol(playerName,playerSymbol, row, col);
-  };
-
-  return {
-    displayPlayersName,
-    displayPlayersSymbol,
-    displayPlayersScore,
-    updatePlayersScore,
-    placeSymbolOnBoard,
-  };
-};
-
-const playerOne = createPlayer('Player X', 'X');
-const playerTwo = createPlayer('Player O', 'O');
-
 const displayResult = (() => {
   const resultPlaceholder = document.getElementById('result-placeholder');
   const createParagraph = document.createElement('p');
@@ -165,4 +178,24 @@ const displayResult = (() => {
   updateResult();
 
   return { updateResult }
+})();
+
+const formControl = (() => {
+  const form = document.getElementById('form');
+
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const playerXName = document.getElementById('player-x').value;
+    const playerOName = document.getElementById('player-o').value;
+    
+    playerOne.setPlayersName(playerXName);
+    playerTwo.setPlayersName(playerOName);
+
+    displayResult.updateResult();
+
+    form.style.display = 'none';
+
+    console.log(playerXName);
+    console.log(playerOName);
+  })
 })();

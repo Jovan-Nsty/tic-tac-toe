@@ -9,6 +9,18 @@
   </head>
   <body>
     <section id="main">
+      <form action="" id="form">
+        <label for="player-x">Player X name:</label>
+        <input type="text" id="player-x" name="player-x" required>
+        <label for="player-o">Player O name:</label>
+        <input type="text" id="player-o" name="player-o" required>
+        <div id="legend">
+          <p>Note:</p>
+          <p>X plays the first round, O second, etc..</p>
+          <p>It's turn based!</p>
+        </div>
+        <button type="submit" id="submit-btn">Submit</button>
+      </form>
       <section id="container">
         <div class="row" data-row="0">
           <div class="column" data-column="0"></div>

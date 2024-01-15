@@ -11,6 +11,7 @@ const gameBoard = (() => {
     playerSymbol === 'X' ? playerOne.updatePlayersScore() : playerTwo.updatePlayersScore();
     gameActive = false;
     console.log('Game Over!');
+    displayResult.updateResult();
   }
 
   const displayGameBoard = () => {
@@ -152,3 +153,20 @@ const createPlayer = (name, mark) => {
 
 const playerOne = createPlayer('Player X', 'X');
 const playerTwo = createPlayer('Player O', 'O');
+
+const displayResult = (() => {
+  const resultPlaceholder = document.getElementById('result-placeholder');
+  const createParagraph = document.createElement('p');
+  
+  const updateResult = (() => {
+    createParagraph.textContent = 
+    `${playerOne.displayPlayersName()} ${playerOne.displayPlayersScore()}:
+     ${playerTwo.displayPlayersScore()} ${playerTwo.displayPlayersName()}`;
+
+    resultPlaceholder.appendChild(createParagraph);
+  });
+
+  updateResult()
+
+  return { updateResult }
+})();

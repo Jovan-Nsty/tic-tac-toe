@@ -118,7 +118,7 @@ const gameFlow = (() => {
 })();
 
 const displayController = (() => {
-  const rematchBtn = document.querySelector('.button');
+  const rematchBtn = document.getElementById('rematch-btn');
 
   const { deleteGameBoard } = gameBoard;
 
@@ -160,7 +160,7 @@ const displayResult = (() => {
   
   const updateResult = (() => {
     createParagraph.textContent = 
-    `${playerOne.displayPlayersName()} ${playerOne.displayPlayersScore()}:
+    `${playerOne.displayPlayersName()} ${playerOne.displayPlayersScore()} :
      ${playerTwo.displayPlayersScore()} ${playerTwo.displayPlayersName()}`;
 
     resultPlaceholder.appendChild(createParagraph);

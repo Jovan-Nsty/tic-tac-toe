@@ -9,6 +9,16 @@ html, body {
     height: 100vh;
 }
 
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 20px;
+    background-color: black;
+}
+
 #container {
     display: flex;
     flex-direction: column;
@@ -23,11 +33,31 @@ html, body {
 .column {
     height: 100px;
     width: 100px;
-    border: 1px solid black;
+    border: 1px solid white;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
+    font-size: 40px;
+}
+
+#rematch-btn {
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: #238636;
+    padding: 11px 14px;
+}
+
+#rematch-btn:hover {
+    background-color: #29a842;
+}
+
+#result-placeholder > p {
+    color: white;
+    font-size: large;
 }
 
 .row:nth-child(1) .column:nth-child(1),

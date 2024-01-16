@@ -3,11 +3,11 @@ const createPlayer = () => {
   let playerSymbol = '';
   let playerScore = 0;
 
-  const setPlayersName = (name) => {
+  const setPlayersName = name => {
     playerName = name;
   }
 
-  const setPlayersSymbol = (symbol) => {
+  const setPlayersSymbol = symbol => {
     playerSymbol = symbol;
   }
 
@@ -43,7 +43,7 @@ const gameBoard = (() => {
 
   let gameActive = true;
 
-  const gameOver = (playerSymbol) => {
+  const gameOver = playerSymbol => {
     playerSymbol === 'X' ? playerOne.updatePlayersScore() : playerTwo.updatePlayersScore();
     gameActive = false;
     displayResult.updateResult();
@@ -113,10 +113,10 @@ const gameFlow = (() => {
   let columnPosition = null;
   let playerOneMove = true;
 
-  const container = document.getElementById('container');
-
   playerOne.setPlayersSymbol('X');
   playerTwo.setPlayersSymbol('O');
+
+  const container = document.getElementById('container');
 
   // Get row and column positions of clicked square
   container.addEventListener('click',(event) => {
@@ -148,7 +148,6 @@ const displayController = (() => {
   const { deleteGameBoard } = gameBoard;
 
   rematchBtn.addEventListener('click',() => {
-    console.log('rematch click');
     deleteGameBoard();
   });
 })();

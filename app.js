@@ -46,7 +46,6 @@ const gameBoard = (() => {
   const gameOver = (playerSymbol) => {
     playerSymbol === 'X' ? playerOne.updatePlayersScore() : playerTwo.updatePlayersScore();
     gameActive = false;
-    console.log('Game Over!');
     displayResult.updateResult();
   }
 
@@ -71,20 +70,17 @@ const gameBoard = (() => {
   };
 
   const placeSymbol = (playerName,playerSymbol, row, col) => {
-    if(gameActive) {
-      if (gameBoard[row][col] === null) {
-        gameBoard[row][col] = playerSymbol;
-      }
+    if(gameActive && gameBoard[row][col] === null) {
+      gameBoard[row][col] = playerSymbol;
       displayGameBoard();
-      checkWin(playerName,playerSymbol);
+      checkWin(playerSymbol);
     }
   };
 
-  const checkWin = (playerName,playerSymbol) => {
+  const checkWin = playerSymbol => {
     // Check rows
     for(let i = 0; i < gameBoard.length; i++) {
       if(gameBoard[i].every(row => row === playerSymbol)) {
-        console.log(`Row win for ${playerName}`);
         gameOver(playerSymbol);
       }
     }
@@ -92,23 +88,19 @@ const gameBoard = (() => {
     // Check columns
     for(let i = 0; i < gameBoard[0].length; i++) {
       if(gameBoard.every(column => column[i] === playerSymbol)) {
-        console.log(`Column win for ${playerName}`);
         gameOver(playerSymbol);
       }
     }
 
     // Check diagonals
     if(gameBoard[0][0] === playerSymbol && gameBoard[1][1] === playerSymbol && gameBoard[2][2] === playerSymbol) {
-      console.log(`Left diagonal win for ${playerName}`);
       gameOver(playerSymbol);
     } else if (gameBoard[0][2] === playerSymbol && gameBoard[1][1] === playerSymbol && gameBoard[2][0] === playerSymbol) {
-      console.log(`Right diagonal win for ${playerName}`);
       gameOver(playerSymbol);
     }
 
     // Check ties
     if(gameBoard.every(row => row.every(element => element !== null))) {
-      console.log(`It's a tie!`);
       gameActive = false;
     }
   };
@@ -133,12 +125,10 @@ const gameFlow = (() => {
 
     if (rowElement) {
       rowPosition = rowElement.dataset.row;
-      console.log(`Row position: ${rowPosition}`);
     }
 
     if (target.classList.contains('column')) {
       columnPosition = target.dataset.column;
-      console.log(`Column position: ${columnPosition}`);
     }
 
     // Players take turns using row and column positions to fill available squares
@@ -194,8 +184,5 @@ const formControl = (() => {
     displayResult.updateResult();
 
     form.style.display = 'none';
-
-    console.log(playerXName);
-    console.log(playerOName);
   })
 })();

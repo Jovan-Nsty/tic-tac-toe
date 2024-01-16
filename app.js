@@ -17,7 +17,7 @@ const createPlayer = () => {
   const updatePlayersScore = () => playerScore++;
 
   const placeSymbolOnBoard = (row, col) => {
-    gameBoard.placeSymbol(playerName,playerSymbol, row, col);
+    gameBoard.placeSymbol(playerSymbol, row, col);
   };
 
   return {
@@ -69,7 +69,7 @@ const gameBoard = (() => {
     gameActive = true;
   };
 
-  const placeSymbol = (playerName,playerSymbol, row, col) => {
+  const placeSymbol = (playerSymbol, row, col) => {
     if(gameActive && gameBoard[row][col] === null) {
       gameBoard[row][col] = playerSymbol;
       displayGameBoard();

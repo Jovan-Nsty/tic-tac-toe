@@ -14,6 +14,10 @@ html, body {
     height: 100vh;
 }
 
+body {
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
 #main {
     display: flex;
     flex-direction: column;
@@ -49,7 +53,7 @@ label {
 input[type=text] {
     padding: 5px 15px;
     cursor: pointer;
-    border: 1px solid black;
+    border: 2px solid black;
     text-align: center;
 }
 

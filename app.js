@@ -93,11 +93,10 @@ const gameBoard = (() => {
     }
 
     // Check diagonals
-    if(gameBoard[0][0] === playerSymbol && gameBoard[1][1] === playerSymbol && gameBoard[2][2] === playerSymbol) {
+    if(gameBoard[0][0] === playerSymbol && gameBoard[1][1] === playerSymbol && gameBoard[2][2] === playerSymbol || 
+       gameBoard[0][2] === playerSymbol && gameBoard[1][1] === playerSymbol && gameBoard[2][0] === playerSymbol) {
       gameOver(playerSymbol);
-    } else if (gameBoard[0][2] === playerSymbol && gameBoard[1][1] === playerSymbol && gameBoard[2][0] === playerSymbol) {
-      gameOver(playerSymbol);
-    }
+    } 
 
     // Check ties
     if(gameBoard.every(row => row.every(element => element !== null))) {

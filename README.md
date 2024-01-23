@@ -1,7 +1,15 @@
-A simple tic tac toe browser game.
+# Tic Tac Toe
 
-The purpose of this project was to focus on using the Factory function design and the Module pattern design as the building blocks of the project.
+## Description
+* A simple tic tac toe browser game.
 
-Made with HTML, CSS and JavaScript.
+## Made with
+* HTML, CSS and JavaScript.
 
-This project was done following The Odin Project curriculum.
+## Visit website
+* [Link](https://jovan-nsty.github.io/tic-tac-toe/)
+
+## Purpose
+* The purpose of this project was to focus on using the Factory function design and the Module pattern design as the building blocks of the project.
+
+* This project was done following The Odin Project curriculum.

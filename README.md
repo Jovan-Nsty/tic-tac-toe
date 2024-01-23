@@ -1,10 +1,10 @@
 # Tic Tac Toe
 
-## Description
-* A simple tic tac toe browser game.
-
 ## Preview
 ![screenshot](assets/tictactoe.png)
+
+## Description
+* A simple tic tac toe browser game.
 
 ## Made with
 * HTML, CSS and JavaScript.

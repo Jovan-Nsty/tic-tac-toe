@@ -2,6 +2,7 @@
 
 ## Description
 * A simple tic tac toe browser game.
+![screenshot](assets/tictactoe.png)
 
 ## Made with
 * HTML, CSS and JavaScript.

@@ -2,6 +2,8 @@
 
 ## Description
 * A simple tic tac toe browser game.
+
+## Preview
 ![screenshot](assets/tictactoe.png)
 
 ## Made with
